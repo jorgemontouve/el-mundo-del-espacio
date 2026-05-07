@@ -2,30 +2,253 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Astronomía para Principiantes - Inicio</title>
     <style>
-        body { margin: 0; font-family: 'Segoe UI', sans-serif; background: #0b1026; color: white; }
-        .hero {
-            height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+        :root {
+            --space: #080d22;
+            --space-soft: #111936;
+            --gold: #f2c94c;
+            --cyan: #7dd3fc;
+            --text: #f8fafc;
+            --muted: #cbd5e1;
+            --glass: rgba(17, 25, 54, 0.72);
         }
-        nav { background: rgba(11, 16, 38, 0.9); padding: 1rem; position: fixed; width: 100%; top: 0; text-align: center; }
-        nav a { color: #f2c94c; margin: 0 15px; text-decoration: none; font-weight: bold; }
-        h1 { font-size: 3.5rem; margin-bottom: 10px; }
-        p { font-style: italic; color: #ccc; }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background:
+                radial-gradient(circle at top left, rgba(125, 211, 252, 0.18), transparent 30%),
+                radial-gradient(circle at bottom right, rgba(242, 201, 76, 0.12), transparent 28%),
+                var(--space);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        nav {
+            align-items: center;
+            backdrop-filter: blur(16px);
+            background: rgba(8, 13, 34, 0.82);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            left: 0;
+            padding: 1rem clamp(1rem, 4vw, 4rem);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 10;
+        }
+
+        .brand {
+            color: var(--text);
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: clamp(0.75rem, 2vw, 1.5rem);
+        }
+
+        nav a {
+            border-radius: 999px;
+            color: var(--gold);
+            font-weight: 700;
+            padding: 0.55rem 0.9rem;
+            text-decoration: none;
+            transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+        }
+
+        nav a:hover,
+        nav a:focus {
+            background: rgba(242, 201, 76, 0.16);
+            color: #fff7c2;
+            transform: translateY(-2px);
+        }
+
+        .hero {
+            align-items: center;
+            background:
+                linear-gradient(110deg, rgba(8, 13, 34, 0.95) 0%, rgba(8, 13, 34, 0.74) 45%, rgba(8, 13, 34, 0.35) 100%),
+                url('https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?auto=format&fit=crop&w=1600&q=80');
+            background-position: center;
+            background-size: cover;
+            display: grid;
+            min-height: 100vh;
+            padding: 7rem clamp(1rem, 5vw, 5rem) 3rem;
+        }
+
+        .hero-content {
+            max-width: 1120px;
+            width: 100%;
+        }
+
+        .eyebrow {
+            color: var(--cyan);
+            font-size: 0.88rem;
+            font-weight: 800;
+            letter-spacing: 0.2em;
+            margin: 0 0 1rem;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            font-size: clamp(3rem, 8vw, 6.8rem);
+            line-height: 0.95;
+            margin: 0;
+            max-width: 840px;
+            text-wrap: balance;
+        }
+
+        .subtitle {
+            color: var(--muted);
+            font-size: clamp(1.1rem, 2vw, 1.35rem);
+            line-height: 1.7;
+            margin: 1.5rem 0 2rem;
+            max-width: 680px;
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .button {
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 999px;
+            color: var(--text);
+            display: inline-block;
+            font-weight: 800;
+            padding: 0.9rem 1.35rem;
+            text-decoration: none;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+        }
+
+        .button.primary {
+            background: linear-gradient(135deg, var(--gold), #f59e0b);
+            box-shadow: 0 16px 40px rgba(242, 201, 76, 0.24);
+            color: #1e1b0a;
+        }
+
+        .button.secondary {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .button:hover,
+        .button:focus {
+            transform: translateY(-3px);
+        }
+
+        .quick-cards {
+            display: grid;
+            gap: 1rem;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            max-width: 980px;
+        }
+
+        .quick-card {
+            background: var(--glass);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 22px;
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.22);
+            padding: 1.25rem;
+        }
+
+        .quick-card span {
+            color: var(--gold);
+            display: block;
+            font-size: 1.6rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .quick-card h2 {
+            font-size: 1rem;
+            margin: 0 0 0.5rem;
+        }
+
+        .quick-card p {
+            color: var(--muted);
+            font-size: 0.94rem;
+            line-height: 1.55;
+            margin: 0;
+        }
+
+        @media (max-width: 760px) {
+            nav {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+            }
+
+            nav a {
+                padding-left: 0;
+            }
+
+            .hero {
+                padding-top: 10rem;
+            }
+
+            .quick-cards {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
-    <nav>
-        <a href="index.html">Inicio</a>
-        <a href="tecnico.html">Conceptos Técnicos</a>
-        <a href="multimedia.html">Galería y Vídeos</a>
+    <nav aria-label="Navegación principal">
+        <div class="brand">El mundo del espacio</div>
+        <div class="nav-links">
+            <a href="index.html">Inicio</a>
+            <a href="tecnico.html">Conceptos Técnicos</a>
+            <a href="multimedia.html">Galería y Vídeos</a>
+        </div>
     </nav>
-    <section class="hero">
-        <h1>Explorando el Cosmos</h1>
-        <p>"El universo es un libro abierto; solo tienes que aprender a leerlo"</p>
-    </section>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <p class="eyebrow">Astronomía para principiantes</p>
+                <h1>Explorando el Cosmos</h1>
+                <p class="subtitle">El universo es un libro abierto: aprende a leer sus constelaciones, descubre los objetos más fascinantes del cielo y empieza tu viaje de observación con una guía clara y visual.</p>
+
+                <div class="actions" aria-label="Accesos destacados">
+                    <a class="button primary" href="tecnico.html">Comenzar la guía</a>
+                    <a class="button secondary" href="multimedia.html">Ver galería</a>
+                </div>
+
+                <div class="quick-cards">
+                    <article class="quick-card">
+                        <span aria-hidden="true">✦</span>
+                        <h2>Observa el cielo</h2>
+                        <p>Identifica constelaciones, planetas brillantes y eventos visibles a simple vista.</p>
+                    </article>
+                    <article class="quick-card">
+                        <span aria-hidden="true">☄</span>
+                        <h2>Comprende conceptos</h2>
+                        <p>Aprende distancias, escalas y herramientas básicas para empezar con seguridad.</p>
+                    </article>
+                    <article class="quick-card">
+                        <span aria-hidden="true">◐</span>
+                        <h2>Inspírate</h2>
+                        <p>Explora imágenes y vídeos para reconocer los protagonistas del espacio profundo.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
 </body>
 </html>
